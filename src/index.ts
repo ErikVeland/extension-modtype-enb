@@ -33,10 +33,10 @@ function install(files: string[],
   const basePath = path.dirname(refFile);
 
   const instructions: types.IInstruction[] = files
-      .filter(filePath =>
-          !filePath.endsWith(path.sep)
+    .filter(filePath =>
+      !filePath.endsWith(path.sep)
           && !path.relative(basePath, path.dirname(filePath)).startsWith('..'))
-          .map(filePath => makeCopy(basePath, filePath));
+    .map(filePath => makeCopy(basePath, filePath));
 
   return Promise.resolve({ instructions });
 }
@@ -82,9 +82,9 @@ function init(context: types.IExtensionContext) {
 
   context.registerModType('enb', 100, gameSupported,
                           getPath, () => Promise.resolve(false), {
-    mergeMods: true,
-    name: 'ENB',
-  });
+                            mergeMods: true,
+                            name: 'ENB',
+                          });
   // context.registerInstaller('enb', 50, testSupported, install);
 
   return true;
